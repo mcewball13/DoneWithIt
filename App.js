@@ -7,30 +7,28 @@ import {
     Button,
     Platform,
     StatusBar,
-    Dimensions
+    Dimensions,
 } from "react-native";
-import {useDimensions, useDeviceOrientation} from "@react-native-community/hooks";
+import {
+    useDimensions,
+    useDeviceOrientation,
+} from "@react-native-community/hooks";
+
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import ViewImageScreen from "./app/screens/ViewImageScreen";
+
+import AppText from "./app/components/AppText";
 
 export default function App() {
-    
-
     return (
-      <View style={{
-          backgroundColor: "#fff",
-          flex: 1,
-      }}>
-          <View style={{
-              
-          }}/>
-          
-      </View>
+        <View style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: 1
+        }}>
+            <AppText>I love react native</AppText>
+        </View>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    },
-});
+

@@ -1,7 +1,6 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import AppButton from "../components/AppButton";
-import LoginButton from "../components/LoginButton";
 
 function WelcomeScreen(props) {
     return (

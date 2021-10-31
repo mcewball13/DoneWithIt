@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
 import Constants from "expo-constants";
 
@@ -23,13 +23,13 @@ const initialMessages = [
 ];
 
 function MessagesScreen(props) {
-    const [messages, setMessages] = useState(initialMessages)
+    const [messages, setMessages] = useState(initialMessages);
+    const [refreshing, setRefreshing] = useState(false);
 
-    const handleDelete = message => {
-       setMessages(messages.filter(m => m.id !== message.id))
-    }
+    const handleDelete = (message) => {
+        setMessages(messages.filter((m) => m.id !== message.id));
+    };
 
-    
     return (
         <Screen>
             <FlatList
@@ -49,6 +49,18 @@ function MessagesScreen(props) {
                     />
                 )}
                 ItemSeparatorComponent={ListItemSeperator}
+                refreshing={refreshing}
+                onRefresh={() => (
+                    setMessages([
+                       
+                        {
+                            id: 2,
+                            title: "T2",
+                            description: "Description 2",
+                            image: require("../assets/mosh.jpg"),
+                        },
+                    ])
+                )}
             />
         </Screen>
     );

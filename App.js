@@ -30,8 +30,8 @@ import ListingScreens from "./app/screens/ListingScreens";
 
 export default function App() {
     return (
-        <Screen>
+        
             <ListingScreens/>
-        </Screen>
+    
     );
 }

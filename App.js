@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -8,6 +8,8 @@ import {
     Platform,
     StatusBar,
     Dimensions,
+    TextInput,
+    Switch,
 } from "react-native";
 import {
     useDimensions,
@@ -27,11 +29,19 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingScreens from "./app/screens/ListingScreens";
+import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
+    const [isNew, setIsNew] = useState(false);
+
+    const [firstName, setFirstName] = useState("");
+
     return (
-        
-            <ListingScreens/>
-    
+        <Screen>
+            <Switch
+                value={isNew}
+                onValueChange={(newValue) => setIsNew(newValue)}
+            />
+        </Screen>
     );
 }

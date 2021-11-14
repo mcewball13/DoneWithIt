@@ -30,18 +30,15 @@ import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingScreens from "./app/screens/ListingScreens";
 import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
+import LoginScreen from "./app/screens/LoginScreen";
+
+
 
 export default function App() {
-    const [isNew, setIsNew] = useState(false);
 
-    const [firstName, setFirstName] = useState("");
 
     return (
-        <Screen>
-            <Switch
-                value={isNew}
-                onValueChange={(newValue) => setIsNew(newValue)}
-            />
-        </Screen>
+        <LoginScreen/>
     );
 }

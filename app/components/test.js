@@ -3,9 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 const Test = () => {
     return (
-        <View>
-            
-        </View>
+        <View style={styles.container}></View>
     );
 }
 

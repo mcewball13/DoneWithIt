@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { View, StyleSheet, Image, TouchableWithoutFeedback, Alert } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
@@ -6,6 +6,10 @@ import * as ImagePicker from "expo-image-picker";
 import colors from "../config/colors";
 
 const ImageInput = ({ imageUri, onChangeImage }) => {
+useEffect(() => {
+    requestPermission()
+}, [])
+
     const handlePress = ()=> {
         if (!imageUri) selectImage();
         else Alert.alert("Delete", "Are you sure you want to selete?", [
@@ -14,6 +18,11 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
 
         ])
     }
+    const requestPermission = async () => {
+        const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (!result.granted)
+            alert("You need to enable permission to access the library");
+    };
     const selectImage = async () => {
         try {
             const result = await ImagePicker.launchImageLibraryAsync({

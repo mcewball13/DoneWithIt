@@ -7,36 +7,20 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import { Button, Image } from "react-native";
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 
 export default function App() {
-const [imageUri, setImageUri] = useState()
+    const [imageUris, setImageUris] = useState([]);
 
-    const requestPermission = async () => {
-        const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (!result.granted)
-            alert("You need to enable permission to access the library");
+    const handleAdd = (uri) => {
+        setImageUris([...imageUris, uri]);
     };
 
-    useEffect(() => {
-        requestPermission();
-    }, []);
-
-    const selectImage = async () => {
-        try {
-            const result = await ImagePicker.launchImageLibraryAsync();
-          if (!result.cancelled) {
-            setImageUri(result.uri)
-          }
-        } catch (error) {
-            console.log("Error reading an image");
-        }
+    const handleRemove = (uri) => {
+        setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
     };
 
     return (
-        <Screen>
-            <Button title="Select Image" onPress={selectImage} />
-            <Image source={{uri: imageUri }} style={{width: 200, height: 200}} />
-            <ImageInput imageUri={imageUri} />
-        </Screen>
+        <ListingEditScreen />
     );
 }
